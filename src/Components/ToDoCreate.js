@@ -17,7 +17,6 @@ function ToDoCreate({ onCreate }) {
     <div className="todo-create">
       <h3>Add a Task</h3>
       <form onSubmit={handleSubmit}>
-        <label>Add ToDo</label>
         <input className="input" value={toDo} onChange={onChange} />
         <button className="button">Create!</button>
       </form>

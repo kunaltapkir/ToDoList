@@ -24,10 +24,10 @@ function ToDoShow({ toDo, onDelete, onEdit }) {
     <div className="todo-show">
       <div>{content}</div>
       <div className="actions">
-        <button className="edit" onClick={onDeleteClick}>
+        <button className="edit" onClick={onEditClick}>
           Delete
         </button>
-        <button className="delete" onClick={onEditClick}>
+        <button className="delete" onClick={onDeleteClick}>
           Edit
         </button>
       </div>

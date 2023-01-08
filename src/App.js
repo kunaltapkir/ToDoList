@@ -1,26 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ToDoList from "./Components/ToDoList";
 import ToDoCreate from "./Components/ToDoCreate";
+import axios from "axios";
 
 function App() {
   const [toDos, setToDos] = useState([]);
 
-  const createToDo = (title) => {
-    const updatedList = [
-      ...toDos,
-      { id: Math.round(Math.random() * 9999), title },
-    ];
+  const fetcTODos = async () => {
+    const response = await axios.get("http://localhost:3001/toDos");
+    setToDos(response.data);
+  };
+
+  useEffect(() => {
+    fetcTODos();
+  }, []);
+
+  const createToDo = async (title) => {
+    const response = await axios.post("http://localhost:3001/toDos", { title });
+    const updatedList = [...toDos, response.data];
     setToDos(updatedList);
   };
 
-  const deleteToDo = (id) => {
+  const deleteToDo = async (id) => {
+    await axios.delete(`http://localhost:3001/toDos/${id}`);
     const updatedList = toDos.filter((toDo) => toDo.id !== id);
     setToDos(updatedList);
   };
 
-  const editToDo = (id, title) => {
+  const editToDo = async (id, title) => {
+    const response = await axios.put(`http://localhost:3001/toDos/${id}`, {
+      title,
+    });
     const updatedList = toDos.map((toDo) =>
-      toDo.id === id ? { ...toDo, title } : toDo
+      toDo.id === id ? { ...toDo, ...response.data } : toDo
     );
     setToDos(updatedList);
   };

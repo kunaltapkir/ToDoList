@@ -1,0 +1,12 @@
+{
+  "toDos": [
+    {
+      "title": "Do workout",
+      "id": 1
+    },
+    {
+      "title": "Do HouseWork",
+      "id": 3
+    }
+  ]
+}
