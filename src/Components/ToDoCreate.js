@@ -1,11 +1,14 @@
 import { useState } from "react";
+import useToDoContext from "../Hooks/use-todo-context";
 
 function ToDoCreate({ onCreate }) {
   const [toDo, setToDo] = useState("");
 
+  const { createToDo } = useToDoContext();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onCreate(toDo);
+    createToDo(toDo);
     setToDo("");
   };
 

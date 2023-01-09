@@ -5,8 +5,12 @@
       "id": 1
     },
     {
-      "title": "Do HouseWork",
+      "title": "Do Housework",
       "id": 3
+    },
+    {
+      "title": "Do Gym",
+      "id": 4
     }
   ]
 }

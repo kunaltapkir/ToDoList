@@ -1,7 +1,10 @@
 import { useState } from "react";
+import useToDoContext from "../Hooks/use-todo-context";
 
 function ToDoEdit({ toDo, onSubmit }) {
   const [title, setTitle] = useState(toDo.title);
+
+  const { editToDo } = useToDoContext();
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -9,7 +12,8 @@ function ToDoEdit({ toDo, onSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(toDo.id, title);
+    onSubmit();
+    editToDo(toDo.id, title);
   };
 
   return (

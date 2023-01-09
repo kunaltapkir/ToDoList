@@ -1,11 +1,13 @@
 import { useState } from "react";
 import ToDoEdit from "./ToDoEdit";
+import useToDoContext from "../Hooks/use-todo-context";
 
-function ToDoShow({ toDo, onDelete, onEdit }) {
+function ToDoShow({ toDo }) {
   const [showEdit, setShowEdit] = useState(false);
+  const { deleteToDo } = useToDoContext();
 
   const onDeleteClick = (id) => {
-    onDelete(toDo.id);
+    deleteToDo(toDo.id);
   };
 
   const onEditClick = () => {
@@ -14,7 +16,6 @@ function ToDoShow({ toDo, onDelete, onEdit }) {
 
   const handleSubmit = (id, title) => {
     setShowEdit(false);
-    onEdit(id, title);
   };
 
   let content = <h3>{toDo.title}</h3>;
